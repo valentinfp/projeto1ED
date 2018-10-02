@@ -1,0 +1,1 @@
+# Repositório para o Projeto 1 de Estrutura de Dados 2018/02 - Universidade de Brasília
