@@ -1,16 +1,19 @@
-# Repositório para o Projeto 1 de Estrutura de Dados 2018/02 - Universidade de Brasília
+# RepositÃ³rio para o Projeto 1 de Estrutura de Dados 2018/02 - Universidade de BrasÃ­lia
 
-v0.1 -  Arquivos criados
-v0.2 -  fila.h:
-        * Atualizado com protótipos das funções de fila.c.
-	* Adicionados comentários explicando as estruturas e as funções.
+	v0.1   
+	Arquivos criados
+	
+	v0.2  
+	fila.h:
+        * Atualizado com protÃ³tipos das funÃ§Ãµes de fila.c.
+	* Adicionados comentÃ¡rios explicando as estruturas e as funÃ§Ãµes.
 
 	fila.c:
-	* Funções básicas de manipulação da lista foram finalizadas. Entre elas:
+	* FunÃ§Ãµes bÃ¡sicas de manipulaÃ§Ã£o da lista foram finalizadas. Entre elas:
 		> alocaCelula;
 		> criaFilaVazia;
 		> vazia;
 		> adicionaCelula;
 		> removeCelula;
 		> imprimeFila;
-	* Adicionados comentários explicando as funções.
+	* Adicionados comentÃ¡rios explicando as funÃ§Ãµes.
