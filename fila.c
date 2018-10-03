@@ -2,58 +2,47 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*Aloca uma célula dinamicamente*/
 void alocaCelula(Apontador celula){
 	celula = (Apontador)malloc(sizeof(Celula));
 }
 
+/*Cria uma fila vazia*/
 void criaFilaVazia(TipoFila* fila){
 	alocaCelula(fila->inicio);
 	fila->fim = fila->inicio;
 	fila->inicio->proximo = NULL;
 }
 
-int Vazia(TipoFila* fila){
+/*Verifica se a fila está vazia*/
+int vazia(TipoFila* fila){
 	return(fila->inicio == fila->fim);
 }
 
-
-void adicionaCliente(TipoCliente* cliente, TipoFila* fila){
-	Apontador novo;
-	alocaCelula(novo);
-	novo->prox = NULL;
-	if(Vazia(fila)){
-		fila->inicio->proximo = novo;
-		fila->fim = novo;
-		return;
-	}
-	fila->fim->proximo = novo;
-	
-	novaCelula->cliente = cliente;
-	novaCelula->prox = NULL;
-	fila->fim->cliente = cliente;
-	fila->fim->proximo = NULL;
-	
+/*Adiciona um elemento ao final da fila*/
+void adicionaCelula(TipoCliente* c, TipoFila* fila){
+	Apontador novaCelula;
+	alocaCelula(novaCelula);
+	fila->fim = novaCelula;
+	fila->fim->cliente = c;
+	fila->fim->proximo = NULL;	
 }
 
-void removeCliente(TipoCliente* cliente, TipoFila* fila){
-	Apontador auxiliar;
-	if(Vazia(fila)){
-		printf("ERRO - Na função \"removeCliente\": A fila já está vazia.\n");
+/*Remove o primeiro elemento na fila e atribui um novo primeiro elemento*/
+void removeCelula(TipoCliente* c, TipoFila* fila){
+	Apontador cel;
+	if(vazia(fila)){
+		printf("ERRO - Na função \"removeCelula\": A fila já está vazia.\n");
 		return;
 	}
-	auxiliar = fila->inicio;
+	cel = fila->inicio;
 	fila->inicio = fila->inicio->proximo;
-	*cliente = fila->inicio->cliente;
-	free(auxiliar);
+	*c = fila->inicio->cliente;
+	free(cel);
 }
 
-void removeFila(TipoFila* fila){
-	while(!(Vazia(fila))){
-
-	}
-}
-
-void imprimeLista(Apontador celula){
+/*Imprime todo o conteúdo da fila*/
+void imprimeFila(Apontador celula){
 	Apontador c;
 	for(c = celula; c != NULL; c = celula->proximo){
 		printf("***************************************************************************\n");
