@@ -7,11 +7,26 @@ void alocaCelula(Apontador celula){
 	celula = (Apontador)malloc(sizeof(Celula));
 }
 
+/*Aloca uma fila dinamicamente*/
+void alocaFila(TipoFila* fila){
+	fila = (TipoFila*)malloc(sizeof(TipoFila));
+}
+
 /*Cria uma fila vazia*/
 void criaFilaVazia(TipoFila* fila){
+	alocaFila(fila);
 	alocaCelula(fila->inicio);
 	fila->fim = fila->inicio;
 	fila->inicio->proximo = NULL;
+}
+
+/*Cria um vetor de filas vazias*/
+void criaVetorFila(TipoFila** vetorFila, int tamanho){
+	int i;
+	vetorFila = (TipoFila**) malloc(sizeof(TipoFila*) * tamanho);
+	for(i = 0; i < tamanho; i++){
+		criaFilaVazia(vetorFila[i]);
+	}
 }
 
 /*Verifica se a fila está vazia*/
@@ -20,16 +35,16 @@ int vazia(TipoFila* fila){
 }
 
 /*Adiciona um elemento ao final da fila*/
-void adicionaCelula(TipoCliente* c, TipoFila* fila){
+void adicionaCelula(void* item, TipoFila* fila){
 	Apontador novaCelula;
 	alocaCelula(novaCelula);
 	fila->fim = novaCelula;
-	fila->fim->cliente = c;
+	fila->fim->item = item;
 	fila->fim->proximo = NULL;	
 }
 
 /*Remove o primeiro elemento na fila e atribui um novo primeiro elemento*/
-void removeCelula(TipoCliente* c, TipoFila* fila){
+void removeCelula(void* item, TipoFila* fila){
 	Apontador cel;
 	if(vazia(fila)){
 		printf("ERRO - Na função \"removeCelula\": A fila já está vazia.\n");
@@ -37,8 +52,28 @@ void removeCelula(TipoCliente* c, TipoFila* fila){
 	}
 	cel = fila->inicio;
 	fila->inicio = fila->inicio->proximo;
-	*c = fila->inicio->cliente;
+	*item = fila->inicio->item;
 	free(cel);
+}
+
+// Libera o espaço de memória de toda a fila
+void freeFila(TipoFila* fila){
+	void* lixo;
+	while(!vazia(fila)){
+		removeCelula(lixo, fila);
+		free(lixo);
+	}
+	free(fila->inicio);
+	free(fila);
+}
+
+// Libera o espaço de memória de um vetor de filas
+void freeVetorFila(TipoFila** vetorFila, int tamanho){
+	int i;
+	for(i = 0; i < tamanho; i++){
+		freeFila(vetorFila[i]);
+	}
+	free(velorFila);
 }
 
 /*Imprime todo o conteúdo da fila*/
@@ -48,7 +83,7 @@ void imprimeFila(Apontador celula){
 		printf("***************************************************************************\n");
 		printf("Cliente %d\n\n", celula->cliente->chave);
 		printf("Horario de chegada: %d\nIdade: %d\nServiço: %d\nCondicao: %d\nGuiche: %d\nTempo de espera: %d\nPrioridade: %d\n",
-				celula->cliente->chegada, celula->cliente->idade, celula->cliente->servico, celula->cliente->condicao, celula->cliente->guiche,
-				celula->cliente->espera, celula->cliente->prioridade);
+				celula->item->chegada, celula->item->idade, celula->item->servico, celula->item->condicao, celula->item->guiche,
+				celula->item->espera, celula->item->prioridade);
 	}
 }
