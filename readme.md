@@ -53,7 +53,7 @@ Autores: Valentin e Larissa
 			> leCarga;
 			> leConfiguracao.
 
-	v3.2:
+	v0.3.2:
 
 	entrada_saida.c:
 		* Renomeado de "entradasaida.c";
