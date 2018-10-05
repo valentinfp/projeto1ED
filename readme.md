@@ -31,7 +31,8 @@ Autores: Valentin e Larissa
 		> entradasaida.c.
 
 	fila.h:
-		* Os tipos TipoCelula e TipoFila tiveram nomes de suas vari�veis internas atualizados para serem utilizados com qualquer tipo de fila (n�o s� de clientes);
+		* Os tipos TipoCelula e TipoFila tiveram nomes de suas vari�veis internas atualizados para serem 
+		  utilizados com qualquer tipo de fila (n�o s� de clientes);
 		* Foi adicionado um TipoGuiche para armazenar as informa��es do arquivo de configura��o de guich�s;
 		* Os prot�tipos das fun��es foram atualizados conforme altera��es feitas no fila.c.
 
@@ -50,7 +51,21 @@ Autores: Valentin e Larissa
 		* Novas fun��es foram criadas:
 			> prioridade;
 			> leCarga;
-			> leConfiguracao;
+			> leConfiguracao.
+
+	v0.3.2:
+
+	entrada_saida.c:
+		* Renomeado de "entradasaida.c";
+		* Foram feitas algumas pequenas corre��es nas fun��es.
+
+	sim_senhas.c:
+		* Renomeado de "projeto1.c";
+		* Atualizado para contar uma fun��o main vazia que importa todas os arquivos at� agora.
+
+	Mafile:
+		* Arquivo criado;
+		* Atualizado com as instru��es atuais de compila��o.			
 
 	v0.4
 
