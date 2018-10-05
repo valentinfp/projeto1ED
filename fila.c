@@ -1,10 +1,10 @@
-#include "fila.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "fila.h"
 
 /*Aloca uma célula dinamicamente*/
 void alocaCelula(Apontador celula){
-	celula = (Apontador)malloc(sizeof(Celula));
+	celula = (Apontador)malloc(sizeof(celula));
 }
 
 /*Aloca uma fila dinamicamente*/
@@ -52,7 +52,7 @@ void removeCelula(void* item, TipoFila* fila){
 	}
 	cel = fila->inicio;
 	fila->inicio = fila->inicio->proximo;
-	*item = fila->inicio->item;
+	item = fila->inicio->item;
 	free(cel);
 }
 
@@ -70,20 +70,20 @@ void freeFila(TipoFila* fila){
 // Libera o espaço de memória de um vetor de filas
 void freeVetorFila(TipoFila** vetorFila, int tamanho){
 	int i;
-	for(i = 0; i < tamanho; i++){
+	for(i = tamanho - 1; i >= 0; i--){
 		freeFila(vetorFila[i]);
 	}
-	free(velorFila);
+	free(vetorFila);
 }
 
 /*Imprime todo o conteúdo da fila*/
 void imprimeFila(Apontador celula){
-	Apontador c;
+/*	Apontador c;
 	for(c = celula; c != NULL; c = celula->proximo){
 		printf("***************************************************************************\n");
-		printf("Cliente %d\n\n", celula->cliente->chave);
+		printf("Cliente %d\n\n", celula->item->chave);
 		printf("Horario de chegada: %d\nIdade: %d\nServiço: %d\nCondicao: %d\nGuiche: %d\nTempo de espera: %d\nPrioridade: %d\n",
 				celula->item->chegada, celula->item->idade, celula->item->servico, celula->item->condicao, celula->item->guiche,
 				celula->item->espera, celula->item->prioridade);
-	}
+	}*/
 }
