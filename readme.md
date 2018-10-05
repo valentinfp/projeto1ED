@@ -1,4 +1,4 @@
-# Projeto 1 de Estrutura de Dados 2018/02 - Universidade de Brasília
+# Projeto 1 de Estrutura de Dados 2018/02 - Universidade de Brasï¿½lia
 Autores: Valentin e Larissa
 
 	v0.1
@@ -11,18 +11,18 @@ Autores: Valentin e Larissa
 	v0.2
 	
 	fila.h:
-        	* Atualizado com protótipos das funções de fila.c;
-		* Adicionados comentários explicando as estruturas e as funções.
+        	* Atualizado com protï¿½tipos das funï¿½ï¿½es de fila.c;
+		* Adicionados comentï¿½rios explicando as estruturas e as funï¿½ï¿½es.
 
 	fila.c:
-		* Funções básicas de manipulação da lista foram finalizadas. Entre elas:
+		* Funï¿½ï¿½es bï¿½sicas de manipulaï¿½ï¿½o da lista foram finalizadas. Entre elas:
 			> alocaCelula;
 			> criaFilaVazia;
 			> vazia;
 			> adicionaCelula;
 			> removeCelula;
 			> imprimeFila.
-		* Adicionados comentários explicando as funções.
+		* Adicionados comentï¿½rios explicando as funï¿½ï¿½es.
 
 	v0.3
 
@@ -31,24 +31,36 @@ Autores: Valentin e Larissa
 		> entradasaida.c.
 
 	fila.h:
-		* Os tipos TipoCelula e TipoFila tiveram nomes de suas variáveis internas atualizados para serem utilizados com qualquer tipo de fila (não só de clientes);
-		* Foi adicionado um TipoGuiche para armazenar as informações do arquivo de configuração de guichês;
-		* Os protótipos das funções foram atualizados conforme alterações feitas no fila.c.
+		* Os tipos TipoCelula e TipoFila tiveram nomes de suas variï¿½veis internas atualizados para serem utilizados com qualquer tipo de fila (nï¿½o sï¿½ de clientes);
+		* Foi adicionado um TipoGuiche para armazenar as informaï¿½ï¿½es do arquivo de configuraï¿½ï¿½o de guichï¿½s;
+		* Os protï¿½tipos das funï¿½ï¿½es foram atualizados conforme alteraï¿½ï¿½es feitas no fila.c.
 
 	fila.c:
-		* Todas as funções foram atualizadas para funcionar para diferentes tipos de item (void*);
-		* Novas funções foram criadas:
+		* Todas as funï¿½ï¿½es foram atualizadas para funcionar para diferentes tipos de item (void*);
+		* Novas funï¿½ï¿½es foram criadas:
 			> alocaFila;
 			> criaVetorFila;
 			> freeFila;
 			> freeVetorFila.
 
 	entradasaida.h:
-		* Adicionado com o protótipo das funções de entradasaida.c.
+		* Adicionado com o protï¿½tipo das funï¿½ï¿½es de entradasaida.c.
 
 	entradasaida.c
-		* Novas funções foram criadas:
+		* Novas funï¿½ï¿½es foram criadas:
 			> prioridade;
 			> leCarga;
 			> leConfiguracao;
-		
+
+	v0.4
+
+	* Arquivos criados:
+		> logica.h;
+		> logica.c.
+
+	entradasaida.h:
+		* Adicionado com o protï¿½tipo das funï¿½ï¿½es de logica.c.
+
+	entradasaida.c
+		* Nova funï¿½ï¿½es foi criadas:
+			> encaixaPrioridade;
