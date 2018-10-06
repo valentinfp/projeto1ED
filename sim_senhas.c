@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "entrada_saida.h"
 #include "fila.h"
+#include "logica.h"
 
 int main(){
 

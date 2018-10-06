@@ -47,7 +47,6 @@ void adicionaCelula(void* item, TipoFila* fila){
 void removeCelula(void* item, TipoFila* fila){
 	Apontador cel;
 	if(vazia(fila)){
-		printf("ERRO - Na função \"removeCelula\": A fila já está vazia.\n");
 		return;
 	}
 	cel = fila->inicio;

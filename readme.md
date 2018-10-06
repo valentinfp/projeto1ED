@@ -79,3 +79,23 @@ Autores: Valentin e Larissa
 	entradasaida.c
 		* Nova fun��es foi criadas:
 			> encaixaPrioridade;
+	
+	v0.4.1
+
+	fila.c:
+		*printf removido da funcao removeCelula.
+
+	entrada_saida.c:
+		*funcao de leitura modificada para informar o indice do cliente.
+
+	logica.h:
+		* Adicionado com o prot�tipo das fun��es de logica.c.
+
+	logica.c:
+		*Nova funcao foi criada:
+		 >chegaCliente;
+
+	sim_senhas.c:
+		*incluida a biblioteca da logica.h na main;
+
+

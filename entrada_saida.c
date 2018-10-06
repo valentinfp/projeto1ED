@@ -6,6 +6,7 @@
 
 /*Lê a fila de carga (clientes)*/
 void leCarga(char* nomeArquivo, TipoFila* fila){
+	int i=1;
 	FILE* arquivo;
 	TipoCliente* cliente;
 
@@ -18,10 +19,13 @@ void leCarga(char* nomeArquivo, TipoFila* fila){
 		fscanf(arquivo,"%d %d %d",&cliente->idade, &cliente->servico, &cliente->condicao);
 
 		cliente->prioridade = prioridade(cliente->idade, cliente->condicao);
+		cliente->indice = i;
 
 		adicionaCelula(cliente, fila);	
 
 		cliente = (TipoCliente*)malloc(1*sizeof(TipoCliente));
+		
+		i++;
 	}
 
 	fclose(arquivo);
