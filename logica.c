@@ -53,8 +53,27 @@ void chegaCliente(int relogio, TipoFila* fila, TipoFila** vetorFila){
     }
 }
 
+/*Transfere um guiche da fila de abertos para a de fechados e atualiza seu cronometro*/
+void fechaGuiche(TipoFila* aberto, TipoFila* fechado, int tempoServico){
+	TipoGuiche* guiche;
+	removeCelula(guiche, aberto);
+	adicionaCelula(guiche, fechado);
+	guiche->cronometro = tempoServico;
 
+}
 
+/*Transfere um guiche da fila de fechados para a de abertos*/
+void abreGuiche(TipoFila* aberto, TipoFila* fechado){
+	TipoGuiche* guiche;
+	removeCelula(guiche, fechado);
+	adicionaCelula(guiche, aberto);
+	
+}
+
+/*Retorna o valor atual do cronometro menos um unidade*/
+int diminuiCronometro(int cronometro){
+	return cronometro - 1;
+}
 
 
 
