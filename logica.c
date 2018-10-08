@@ -69,18 +69,57 @@ void chegaCliente(TipoFila* fila, TipoFila** vetorFila, int relogio){
     Apontador p;
     TipoCliente* Auxp;
     p = fila->inicio->proximo;
-    Auxp = p->item;
 
-    if(Auxp->chegada!=relogio || vazia(fila)){
+    if(vazia(fila)){
         return;
     }
-    else{
-        while(Auxp->chegada==relogio && !vazia(fila)){
-            removeCelula(Auxp, fila);
-            encaixaPrioridade(Auxp, vetorFila[Auxp->servico]);
-            p = fila->inicio->proximo;
-            Auxp = p->item;
-        }
+    Auxp = p->item;
+    
+    while(Auxp->chegada==relogio){
+        removeCelula(Auxp, fila);
+        encaixaPrioridade(Auxp, vetorFila[Auxp->servico]);
+        p = fila->inicio->proximo;
+        if(p==NULL) break;
+        Auxp = p->item;
+    }
+}
+  
+/*Transfere um guiche da fila de abertos para a de fechados e atualiza seu cronometro*/
+int fechaGuiche(TipoFila* aberto, TipoFila* fechado, int tempoServico){
+	TipoGuiche* guiche;
+
+	removeCelula(guiche, aberto);
+	adicionaCelula(guiche, fechado);
+	guiche->cronometro = tempoServico;
+
+    return (guiche->numero);
+}
+
+/*Transfere um guiche da fila de fechados para a de abertos*/
+void abreGuiche(TipoFila* aberto, TipoFila* fechado){
+	TipoGuiche* guiche;
+
+	removeCelula(guiche, fechado);
+	adicionaCelula(guiche, aberto);
+}
+
+/*Retorna o valor atual do cronometro menos um unidade*/
+int diminuiCronometro(TipoFila* fechado){
+	Apontador p;
+    TipoGuiche* Auxp;
+
+    if(vazia(fechado)){  
+      return;  
+    } 
+
+    p = fechado->inicio->proximo;
+    Auxp = p->item;
+
+    while(1){ 
+        Auxp->cronometro -= 1;    
+        p = p->proximo;
+        if(p==NULL) break;
+        Auxp = p->item;
     }
 }
 
@@ -88,12 +127,18 @@ void chegaCliente(TipoFila* fila, TipoFila** vetorFila, int relogio){
 void verificaAbertura(TipoFila* aberto, TipoFila* fechado){
     Apontador p;
     TipoGuiche* Auxp;
+
+    if(vazia(fechado)){
+        return;
+    }
+    
     p = fechado->inicio->proximo;
     Auxp = p->item;
-
-    while(Auxp->cronometro==0 && !vazia(fechado)){
+    
+    while(Auxp->cronometro==0){
         abreGuiche(aberto, fechado);
         p = fechado->inicio->proximo;
+        if(p==NULL) break;
         Auxp = p->item;
     }
 }
@@ -111,10 +156,10 @@ void verificaAberturaTodos(TipoFila** vetorAberto, TipoFila** vetorFechado){
 void atendeCliente(TipoFila* aberto, TipoFila* fechado, TipoFila* filaServico, TipoFila* filaUnica, int relogio, int tempoServico){
     TipoCliente* cliente;
 
-    while(!vazia(aberto) && !vazia(filaServico)){
+    while(!vazia(filaServico) && !vazia(aberto)){
         removeCelula(cliente, filaServico);
-        cliente->guiche = fechaGuiche(aberto, fechado, tempoServico);
         cliente->espera = (relogio - cliente->chegada);
+        cliente->guiche = fechaGuiche(aberto, fechado, tempoServico);
         encaixaIndice(cliente, filaUnica);
     }
 }
@@ -126,7 +171,7 @@ void atendeClienteTodos(TipoFila** vetorAberto, TipoFila** vetorFechado, TipoFil
     atendeCliente(vetorAberto[1], vetorFechado[1], vetorServico[1], filaUnica, relogio, 10);
     atendeCliente(vetorAberto[2], vetorFechado[2], vetorServico[2], filaUnica, relogio, 8);
     atendeCliente(vetorAberto[3], vetorFechado[3], vetorServico[3], filaUnica, relogio, 7);
-    atendeCliente(vetorAberto[4], vetorFechado[4], vetorServico[0], filaUnica, relogio, 2);
+    atendeCliente(vetorAberto[4], vetorFechado[4], vetorServico[4], filaUnica, relogio, 2);
 
 }
 
