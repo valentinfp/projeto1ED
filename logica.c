@@ -103,8 +103,8 @@ void abreGuiche(TipoFila* aberto, TipoFila* fechado){
 	adicionaCelula(guiche, aberto);
 }
 
-/*Retorna o valor atual do cronometro menos um unidade*/
-int diminuiCronometro(TipoFila* fechado){
+/*Diminui o cronometro dos guiches fechado de um servico especifico*/
+void diminuiCronometro(TipoFila* fechado){
 	Apontador p;
     TipoGuiche* Auxp;
 
@@ -123,6 +123,13 @@ int diminuiCronometro(TipoFila* fechado){
     }
 }
 
+/*Diminui o cronometro de todos os guiches*/
+void diminuiCronometroTodos(TipoFila** vetorFechado){
+    int i;
+    for(i=0; i<5; i++){
+        diminuiCronometro(vetorFechado[i]);
+    }
+}
 /*Funcao verifica se eh necessario e abre guiches fechados*/ 
 void verificaAbertura(TipoFila* aberto, TipoFila* fechado){
     Apontador p;

@@ -53,7 +53,7 @@ int leCarga(char* nomeArquivo, TipoFila* fila){
 }
 
 /*Lê as filas de configuração (guichês)*/
-void leConfiguracao(char * nomeArquivo, TipoFila** vetorFila, TipoFila** vetorAberto){
+void leConfiguracao(char * nomeArquivo, TipoFila** vetorAberto){
 	FILE* arquivo;
 	TipoGuiche* guiche;
 	int i, n;
@@ -67,7 +67,6 @@ void leConfiguracao(char * nomeArquivo, TipoFila** vetorFila, TipoFila** vetorAb
 		fscanf(arquivo, "%d", &guiche->servico);
 		guiche->numero = i;
 	
-		adicionaCelula(guiche, vetorFila[guiche->servico]);
 		adicionaCelula(guiche,vetorAberto[guiche->servico]);	
 	}
 	fclose(arquivo);
@@ -94,7 +93,7 @@ void imprimeSaida(char* nomeArquivo, TipoFila* fila, int qtClientes, int relogio
     }
 
 	rewind(arquivo);
-	fprintf(arquivo, "%.2f %.2f", (somaEspera/qtClientes), (qtClientes/relogio));
+	fprintf(arquivo, "%.2f %.2f", (somaEspera/qtClientes), ((float) qtClientes/relogio));
 
 	fclose(arquivo);
 }
