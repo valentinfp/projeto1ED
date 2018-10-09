@@ -9,7 +9,7 @@ void encaixaPrioridade(TipoCliente* cliente, TipoFila* fila){
     Apontador p;
     TipoCliente* Auxp;
 
-    alocaCelula(c);
+    c = alocaCelula();
     c->item = cliente;
     Auxc = c->item;
     p = fila->inicio->proximo;
@@ -19,8 +19,8 @@ void encaixaPrioridade(TipoCliente* cliente, TipoFila* fila){
         free(c);
     }
     else{
-        while(p!=NULL){
-            Auxp = p->item;
+        while(p->proximo!=NULL){
+            Auxp = p->proximo->item;
             if((Auxc->prioridade) > (Auxp->prioridade)){
                 c->proximo = p->proximo;
                 p->proximo = c;
@@ -50,8 +50,8 @@ void encaixaIndice(TipoCliente* cliente, TipoFila* fila){
         free(c);
     }
     else{
-        while(p!=NULL){
-            Auxp = p->item;
+        while(p->proximo!=NULL){
+            Auxp = p->proximo->item;
             if((Auxc->indice) < (Auxp->indice)){
                 c->proximo = p->proximo;
                 p->proximo = c;

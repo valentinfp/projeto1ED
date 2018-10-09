@@ -38,10 +38,10 @@ typedef struct{
 
 /*Protótipo das funções*/
 
-void alocaCelula(Apontador celula); /*Aloca uma célula dinamicamente*/
-void alocaFila(TipoFila* fila); // Aloca uma fila dinamicamente
-void criaFilaVazia(TipoFila* fila); /*Cria uma fila vazia*/
-void criaVetorFila(TipoFila** vetorFila, int tamanho); /*Cria um vetor de filas vazias*/
+Apontador alocaCelula(); /*Aloca uma célula dinamicamente*/
+TipoFila* alocaFila(); // Aloca uma fila dinamicamente
+TipoFila* criaFilaVazia(); /*Cria uma fila vazia*/
+TipoFila** criaVetorFila(); /*Cria um vetor de filas vazias*/
 int vazia(TipoFila* fila); /*Verifica se a fila está vazia*/
 void adicionaCelula(void* item, TipoFila* fila); /*Adiciona uma célula ao final da fila*/
 void removeCelula(void* item, TipoFila* fila); /*Remove uma célula no início da fila*/

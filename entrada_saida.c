@@ -44,8 +44,8 @@ int leCarga(char* nomeArquivo, TipoFila* fila){
 		cliente->prioridade = prioridade(cliente->idade, cliente->condicao);
 		cliente->indice = i;	
 
-		cliente = (TipoCliente*)malloc(1*sizeof(TipoCliente));
 		adicionaCelula(cliente, fila);
+		cliente = (TipoCliente*)malloc(1*sizeof(TipoCliente));
 	}
 	fclose(arquivo);
 

@@ -3,41 +3,46 @@
 #include "fila.h"
 
 /*Aloca uma célula dinamicamente*/
-void alocaCelula(Apontador celula){
-	celula = (Apontador)malloc(sizeof(celula));
+Apontador alocaCelula(){
+	return(TipoCelula*)malloc(sizeof(TipoCelula));
 }
 
 /*Aloca uma fila dinamicamente*/
-void alocaFila(TipoFila* fila){
-	fila = (TipoFila*)malloc(sizeof(TipoFila));
+TipoFila* alocaFila(){
+	return (TipoFila*)malloc(sizeof(TipoFila));
 }
 
 /*Cria uma fila vazia*/
-void criaFilaVazia(TipoFila* fila){
-	alocaFila(fila);
-	alocaCelula(fila->inicio);
+TipoFila* criaFilaVazia(){
+	TipoFila* fila;
+	fila = alocaFila();
+	fila->inicio = alocaCelula();
 	fila->fim = fila->inicio;
 	fila->inicio->proximo = NULL;
+	return fila;
 }
 
 /*Cria um vetor de filas vazias*/
-void criaVetorFila(TipoFila** vetorFila, int tamanho){
+TipoFila** criaVetorFila(){
+	TipoFila** vetorFila;
 	int i;
-	vetorFila = (TipoFila**) malloc(sizeof(TipoFila*) * tamanho);
-	for(i = 0; i < tamanho; i++){
-		criaFilaVazia(vetorFila[i]);
+	vetorFila = (TipoFila**) malloc(sizeof(TipoFila*) * 5);
+	for(i = 0; i < 5; i++){
+		vetorFila[i] = criaFilaVazia();
 	}
+	return vetorFila;
 }
 
 /*Verifica se a fila está vazia*/
 int vazia(TipoFila* fila){
-	return(fila->inicio == fila->fim);
+	return (fila->inicio == fila->fim);
 }
 
 /*Adiciona um elemento ao final da fila*/
 void adicionaCelula(void* item, TipoFila* fila){
 	Apontador novaCelula;
-	alocaCelula(novaCelula);
+	novaCelula = alocaCelula();
+	fila->fim->proximo = novaCelula;
 	fila->fim = novaCelula;
 	fila->fim->item = item;
 	fila->fim->proximo = NULL;	

@@ -9,11 +9,11 @@ int main(int argc, char** argv){
 	TipoFila *Entrada, *Saida;
 	TipoFila **Atendimento,**guicheAberto, **guicheFechado;
 
-	criaFilaVazia(Entrada);
-	criaFilaVazia(Saida);
-	criaVetorFila(Atendimento, 5);
-	criaVetorFila(guicheAberto, 5);
-	criaVetorFila(guicheFechado, 5);
+	Entrada = criaFilaVazia();
+	Saida = criaFilaVazia();
+	Atendimento = criaVetorFila();
+	guicheAberto = criaVetorFila();
+	guicheFechado = criaVetorFila();
 
 	qtCliente = leCarga(argv[2], Entrada);
 	leConfiguracao(argv[1], guicheAberto);
