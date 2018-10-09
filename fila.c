@@ -49,22 +49,25 @@ void adicionaCelula(void* item, TipoFila* fila){
 }
 
 /*Remove o primeiro elemento na fila e atribui um novo primeiro elemento*/
-void removeCelula(void* item, TipoFila* fila){
+void* removeCelula(TipoFila* fila){
+	void* item;
 	Apontador cel;
 	if(vazia(fila)){
-		return;
+		return NULL;
 	}
 	cel = fila->inicio;
 	fila->inicio = fila->inicio->proximo;
 	item = fila->inicio->item;
 	free(cel);
+
+	return item;
 }
 
 // Libera o espaço de memória de toda a fila
 void freeFila(TipoFila* fila){
 	void* lixo;
 	while(!vazia(fila)){
-		removeCelula(lixo, fila);
+		lixo = removeCelula(fila);
 		free(lixo);
 	}
 	free(fila->inicio);

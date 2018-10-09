@@ -87,13 +87,13 @@ void imprimeSaida(char* nomeArquivo, TipoFila* fila, int qtClientes, int relogio
 
     while(p!=NULL){
 		Auxp = p->item;
-		fprintf(arquivo, "%d %d %d %d", Auxp->guiche, Auxp->prioridade, Auxp->espera, Auxp->servico);
+		fprintf(arquivo, "%d %d %d %d\n", Auxp->guiche, Auxp->prioridade, Auxp->espera, Auxp->servico);
         somaEspera += Auxp->espera;
         p = p->proximo;
     }
 
 	rewind(arquivo);
-	fprintf(arquivo, "%.2f %.2f", (somaEspera/qtClientes), ((float) qtClientes/relogio));
+	fprintf(arquivo, "%.2f %.2f\n", (somaEspera/qtClientes), ((float) qtClientes/relogio));
 
 	fclose(arquivo);
 }

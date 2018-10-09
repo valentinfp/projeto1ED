@@ -12,9 +12,9 @@ void encaixaPrioridade(TipoCliente* cliente, TipoFila* fila){
     c = alocaCelula();
     c->item = cliente;
     Auxc = c->item;
-    p = fila->inicio->proximo;
+    p = fila->inicio;
 
-    if(p==NULL){
+    if(p->proximo==NULL){
         adicionaCelula(cliente, fila);
         free(c);
     }
@@ -40,12 +40,12 @@ void encaixaIndice(TipoCliente* cliente, TipoFila* fila){
     Apontador p;
     TipoCliente* Auxp;
 
-    alocaCelula(c);
+    c = alocaCelula();
     c->item = cliente;
     Auxc = c->item;
-    p = fila->inicio->proximo;
+    p = fila->inicio;
 
-    if(p==NULL){
+    if(p->proximo==NULL){
         adicionaCelula(cliente, fila);
         free(c);
     }
@@ -76,7 +76,7 @@ void chegaCliente(TipoFila* fila, TipoFila** vetorFila, int relogio){
     Auxp = p->item;
     
     while(Auxp->chegada==relogio){
-        removeCelula(Auxp, fila);
+        removeCelula(fila);
         encaixaPrioridade(Auxp, vetorFila[Auxp->servico]);
         p = fila->inicio->proximo;
         if(p==NULL) break;
@@ -88,7 +88,7 @@ void chegaCliente(TipoFila* fila, TipoFila** vetorFila, int relogio){
 int fechaGuiche(TipoFila* aberto, TipoFila* fechado, int tempoServico){
 	TipoGuiche* guiche;
 
-	removeCelula(guiche, aberto);
+	guiche = removeCelula(aberto);
 	adicionaCelula(guiche, fechado);
 	guiche->cronometro = tempoServico;
 
@@ -99,7 +99,7 @@ int fechaGuiche(TipoFila* aberto, TipoFila* fechado, int tempoServico){
 void abreGuiche(TipoFila* aberto, TipoFila* fechado){
 	TipoGuiche* guiche;
 
-	removeCelula(guiche, fechado);
+	guiche = removeCelula(fechado);
 	adicionaCelula(guiche, aberto);
 }
 
@@ -164,7 +164,7 @@ void atendeCliente(TipoFila* aberto, TipoFila* fechado, TipoFila* filaServico, T
     TipoCliente* cliente;
 
     while(!vazia(filaServico) && !vazia(aberto)){
-        removeCelula(cliente, filaServico);
+        cliente = removeCelula(filaServico);
         cliente->espera = (relogio - cliente->chegada);
         cliente->guiche = fechaGuiche(aberto, fechado, tempoServico);
         encaixaIndice(cliente, filaUnica);
@@ -196,6 +196,9 @@ int verificaFim(TipoFila** vetorServico, TipoFila** vetorFechado, TipoFila* fila
 
     return fim;
 }
+
+//int calculaEsperaMedia(TipoFila* fila){
+
 
 
 
