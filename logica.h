@@ -17,6 +17,6 @@ void verificaAberturaTodos(TipoFila** vetorAberto, TipoFila** vetorFechado);/*Ve
 void atendeCliente(TipoFila* aberto, TipoFila* fechado, TipoFila* filaServico, TipoFila* filaUnica, int relogio, int tempoServico);/*Atende, se possivel, clientes na fila de espera do respectivo servico*/
 void atendeClienteTodos(TipoFila** vetorAberto, TipoFila** vetorFechado, TipoFila** vetorServico, TipoFila* filaUnica, int relogio);/*Atende clientes de todas as filas de servico*/
 int verificaFim(TipoFila** vetorServico, TipoFila** vetorFechado, TipoFila* filaUnica);/*Verifica se a simulacao chegou ao fim*/
-
+float calculaSomaEspera(TipoFila* fila);/*Funcao retorna a soma das esperas dos clientes*/
 
 #endif

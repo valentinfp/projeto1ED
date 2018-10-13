@@ -47,6 +47,7 @@ int leCarga(char* nomeArquivo, TipoFila* fila){
 		adicionaCelula(cliente, fila);
 		cliente = (TipoCliente*)malloc(1*sizeof(TipoCliente));
 	}
+	free(cliente);
 	fclose(arquivo);
 
 	return i;
@@ -74,26 +75,20 @@ void leConfiguracao(char * nomeArquivo, TipoFila** vetorAberto){
 
 /*Funcao que gera o arquivo de saida*/
 void imprimeSaida(char* nomeArquivo, TipoFila* fila, int qtClientes, int relogio){
-	float somaEspera=0;
 	FILE* arquivo;
     Apontador p;
     TipoCliente* Auxp;
 
 	arquivo = fopen(nomeArquivo,"w");
-	fprintf(arquivo,"\n");
+	fprintf(arquivo, "%.2f %.2f\n", (calculaSomaEspera(fila)/qtClientes), ((float) qtClientes/relogio));
 
     p = fila->inicio->proximo;
-    Auxp = p->item;
 
     while(p!=NULL){
 		Auxp = p->item;
 		fprintf(arquivo, "%d %d %d %d\n", Auxp->guiche, Auxp->prioridade, Auxp->espera, Auxp->servico);
-        somaEspera += Auxp->espera;
         p = p->proximo;
     }
-
-	rewind(arquivo);
-	fprintf(arquivo, "%.2f %.2f\n", (somaEspera/qtClientes), ((float) qtClientes/relogio));
 
 	fclose(arquivo);
 }

@@ -197,7 +197,22 @@ int verificaFim(TipoFila** vetorServico, TipoFila** vetorFechado, TipoFila* fila
     return fim;
 }
 
-//int calculaEsperaMedia(TipoFila* fila){
+/*Funcao retorna a soma das esperas dos clientes*/
+float calculaSomaEspera(TipoFila* fila){ 
+    float somaEspera=0;
+    Apontador p;
+    TipoCliente* Auxp;
+
+    p = fila->inicio->proximo;
+
+    while(p!=NULL){
+		Auxp = p->item;
+        somaEspera += Auxp->espera;
+        p = p->proximo;
+    }
+
+    return somaEspera;
+}
 
 
 

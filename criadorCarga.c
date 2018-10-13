@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define NUMC 20 /* Define quantas pessoas terao no arquivo de carga*/
+#define NUMC 100 /* Define quantas pessoas terao no arquivo de carga*/
 
 int main(int argc, char** argv){
     if(argc!=2){
